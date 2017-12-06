@@ -1,0 +1,138 @@
+@import "variables";
+
+.calculator {
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  margin: 20px;
+  justify-content: center;
+  align-items: center;
+  max-width: 40%;
+  @media screen and (max-width: $phone) {
+    max-width: 600px;
+  }
+  .form {
+    margin-top:20px;
+    margin-right: 100px;
+    margin-left: 100px;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    .button-group {
+      justify-content: center;
+      align-items: center;
+      button {
+        display: flex;
+        align-self: center;
+        justify-self: center;
+        h4{
+          padding-top: 5px;
+        }
+      }
+    }
+    .inline-items {
+      display: flex;
+      flex-direction: row;
+        justify-content: space-around;
+      .form-group {
+        margin-right: 15px;
+        text-align: center;
+        .blood-buttons {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          .group {
+            display: flex;
+            flex-direction: row;
+            .man-blood {
+              height: 80px;
+              width: 80px;
+              font-size: 30px;
+              border: 2px solid $red-orange;
+              display: flex;
+              flex-direction: column;
+              justify-content: center;
+              align-items: center;
+              margin: 2px;
+              border-radius: 10px;
+              &:hover {
+                background-color: $red;
+              }
+              &.active {
+                background-color: $red;
+              }
+            }
+            .woman-blood {
+              height: 80px;
+              width: 80px;
+              font-size: 30px;
+              border:  2px solid $red-purple;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              margin: 2px;
+              border-radius: 10px;
+              &:hover {
+                background-color: $purple;
+              }
+              &.active {
+                background-color: $purple;
+              }
+
+            }
+            .woman-rh {
+              height: 80px;
+              width: 80px;
+              font-size: 30px;
+              border: 2px solid $red-purple;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              margin: 2px;
+              border-radius: 10px;
+              &:hover {
+                background-color: $purple;
+              }
+              &.active {
+                background-color: $purple;
+              }
+
+            }
+            .man-rh{
+                            height: 80px;
+              width: 80px;
+              font-size: 30px;
+              border: 2px solid $red-orange;
+              display: flex;
+              flex-direction: column;
+              justify-content: center;
+              align-items: center;
+              margin: 2px;
+              border-radius: 10px;
+              &:hover {
+                background-color: $red;
+              }
+              &.active {
+                background-color: $red;
+              }
+            }
+          }
+
+        }
+      }
+    }
+  }
+  img{
+    bottom: -25px;
+    height: 50px;
+    width: 50px;
+  }
+  .results{
+    margin: 5px;
+    padding: 8px;
+    border-radius: 10px;
+    border: 1px solid $red;
+  }
+}

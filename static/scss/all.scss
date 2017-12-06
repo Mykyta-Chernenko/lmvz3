@@ -1,0 +1,32 @@
+@import "reset";
+@import "bootstrap4/bootstrap";
+@import "bootstrap_change";
+@import 'home';
+@import "calculator";
+@import "blood_search";
+html {
+  display: flex;
+  min-height: 100%;
+
+}
+
+body {
+  display: flex;
+  flex: 1;
+
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  background-color: gainsboro;
+  flex: 1;
+  font-family: "Uni sans", monospace;
+  background-image: url('../images/pri_42075107.jpg');
+}
+
+
+.navbar {
+  background-color: rgba($red, 0.65);
+  color: black;
+}

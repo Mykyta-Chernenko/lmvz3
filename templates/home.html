@@ -1,0 +1,169 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+    <div class="home">
+        <div class="blood-home col-8">
+            <div class="blood-info">
+
+                <h1 class="box-header">Информационный портал о крови</h1>
+
+
+                <div class="panel about">
+                    <!-- google_ad_section_start -->
+                    <p style="text-align: justify;">Каждый человек состоит на 7-8 % из крови, если брать от общей массы
+                        тела. Значит кровь является одним из самых важных компонентов человека. Кровь циркулирует по
+                        всему
+                        телу с ног до головы и без нее не было бы жизни. Наша задача — дать общую информацию о крови,
+                        рассказать о свойствах, значении, разновидности, используемости данной жидкости в различных
+                        областях
+                        медицины.</p>
+                    <p style="text-align: justify;">Польза сайта существенна для всех типов людей,
+                        особенно
+                        женского пола. Здесь можно прочитать про кровь своего ребенка до и после его рождения. Н
+                        прочитать если не знали про Вашу личную группу крови, сахаре в крови и в общем о составе крови в
+                        теле. </p>
+                    <p style="text-align: justify;">Наши авторы используют самую современную и полезную информацию,
+                        собранную из всевозможных источников представленную в удобном для чтения виде. Мы всегда
+                        стараемся
+                        сделать так, чтобы Вам было полезно и приятно проводить время с нами.</p>
+                    <p style="text-align: justify;">Данный ресурс никогда не останется к Вам равнодушным. Здесь Вы
+                        всегда
+                        можете обратиться по любой проблеме, связанной с кровью, и мы с нашими читателями обязательно
+                        вам
+                        поможем. Оставляйте свои комментарии или пользуйтесь контактами для связи с администрацией
+                        проекта,
+                        у нас есть ответы на все вопросы.</p>
+                    <hr>
+                    <div style="display: flex; justify-self: center; align-self: center; margin-left: 25%; margin-bottom: 10px">
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/UlWIxbku8rQ" frameborder="0"
+                                gesture="media" allow="encrypted-media" allowfullscreen></iframe>
+                    </div>
+                </div>
+
+            </div>
+            <div class="blood-info">
+                <h1>Свойства крови</h1>
+                <ul>
+                    <li> - Суспензионные свойства зависят от белкового состава плазмы крови, и от соотношения белковых
+                        фракций (в норме альбуминов больше, чем глобулинов).
+                    </li>
+                    <li> - Коллоидные свойства связаны с наличием белков в плазме. За счёт этого обеспечивается
+                        постоянство жидкого состава крови, так как молекулы белка обладают способностью удерживать воду.
+                    </li>
+                    <li>- Электролитные свойства зависят от содержания в плазме крови анионов и катионов. Электролитные
+                        свойства крови определяются осмотическим давлением крови.
+                    </li>
+                </ul>
+                <h1>Состав крови</h1>
+                <p>  - Весь объём крови живого организма условно делится на периферический (находящийся и циркулирующий в
+                    русле сосудов) и кровь, находящуюся в кроветворных органах и периферических тканях. Кровь состоит из двух
+                    основных компонентов: плазмы и взвешенных в ней форменных элементов. Отстоявшаяся кровь состоит из
+                    трёх слоёв: верхний слой образован желтоватой плазмой крови, средний, сравнительно тонкий серый слой
+                    составляют лейкоциты, нижний красный слой образуют эритроциты[4]. У взрослого здорового человека
+                    объём плазмы достигает 50—60 % цельной крови, а форменных элементов крови составляют около 40—50 %.
+                    Отношение
+                    форменных элементов крови к её общему объёму, выраженное в процентах или представленное в виде
+                    десятичной дроби с точностью до сотых, называется гематокритным числом (от др.-греч. αἷμα — кровь,
+                    κριτός — показатель) или гематокритом (Ht). Таким образом, гематокрит — часть объёма крови,
+                    приходящаяся
+                    на эритроциты[5] (иногда определяется как отношение всех форменных элементов (эритроциты, лейкоциты,
+                    тромбоциты) к общему объёму крови[6]). Определение гематокрита проводится с помощью специальной
+                    стеклянной градуированной трубочки — гематокрита, которую заполняют кровью и центрифугируют. После
+                    этого
+                    отмечают, какую её часть занимают форменные элементы крови (лейкоциты, тромбоциты и эритроциты). В
+                    медицинской практике для определения показателя гематокрита (Ht или PCV) всё шире распространяется
+                использование автоматических гематологических анализаторов.</pre>
+                </p>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+<form method="get" id="base_search">
+    <label for="search_name">Имя</label>
+    <input type="text" id="search_name" name="name" placeholder="Имя" value="{{ search_name }}">
+
+    <label for="search_surname">Фамилия</label>
+    <input type="text" id="search_surname" name="surname" placeholder="Фамилия"
+           value="{{ search_surname }}">
+
+    <label for="search_patronymic">Отчество</label>
+    <input type="text" id="search_patronymic" name="patronymic" placeholder="Отчество"
+           value="{{ search_patronymic }}">
+
+    <label for="search_birthday">Дата рождения</label>
+    <input type="date" id="search_birthday" name="birthday" placeholder="Дата рождения"
+           value="{{ search_birthday }}">
+
+    <label for="search_blood_group">Группа крови</label>
+    <input type="text" id="search_blood_group" name="blood_group" placeholder="Группа крови"
+           value="{{ search_blood_group }}">
+
+    <label for="search_tr">Резус крови</label>
+    <input type="text" id="search_tr" name="tr" placeholder="Резус крови" value="{{ search_tr }}">
+
+    <label for="search_pass_date">Дата сдачи крови</label>
+    <input type="text" id="search_pass_date" name="pass_date" placeholder="Дата сдачи крови"
+           value="{{ search_pass_date }}">
+
+    <label for="search_diseases">Заболевания</label>
+    <input type="text" id="search_diseases" name="diseases" placeholder="Заболевания"
+           value="{{ search_diseases }}">
+
+    <button type="submit">Поиск по всем сдачам</button>
+
+</form>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+    $('#changelist-search').on('submit', function () {
+        href = window.location.pathname;
+        q = $('#searchbar').val();
+        name = $('#search_name').val();
+        surname = $('#search_surname').val();
+        patronymic = $('#search_patronymic').val();
+        birthday = $('#search_birthday').val();
+        blood_group = $('#search_blood_group').val();
+        tr = $('#search_tr').val();
+        pass_date = $('#search_pass_date').val();
+        diseases = $('#search_diseases').val();
+        params = '';
+        if (q) {
+            params = '?q=' + q + '&type=elastic&name=' + name
+                + '&surname=' + surname
+                + '&patronymic=' + patronymic
+                + '&birthday=' + birthday
+                + '&blood_group=' + blood_group
+                + '&tr=' + tr
+                + '&pass_date=' + pass_date
+                + '&diseases=' + diseases;
+        }
+        window.location.href = href + params;
+        return false;
+    });
+    $('#base_search').on('submit', function () {
+        href = window.location.pathname;
+        q = $('#searchbar').val();
+        name = $('#search_name').val();
+        surname = $('#search_surname').val();
+        patronymic = $('#search_patronymic').val();
+        birthday = $('#search_birthday').val();
+        blood_group = $('#search_blood_group').val();
+        tr = $('#search_tr').val();
+        pass_date = $('#search_pass_date').val();
+        diseases = $('#search_diseases').val();
+        params = '';
+
+        params = '?q=' + q + '&name=' + name
+            + '&surname=' + surname
+            + '&patronymic=' + patronymic
+            + '&birthday=' + birthday
+            + '&blood_group=' + blood_group
+            + '&tr=' + tr
+            + '&pass_date=' + pass_date
+            + '&diseases=' + diseases
+            + '&type=base=';
+
+        window.location.href = href + params;
+        return false;
+    })
+</script>

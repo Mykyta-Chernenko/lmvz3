@@ -1,0 +1,220 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <div class=" calculator align-self-center">
+
+        <form class="form" method="post" href="/content" id="calculator">
+            <div class="inline-items">
+                <div class="form-group">
+                    <h2>Папа</h2>
+                    Группа крови
+                    <div class="blood-buttons">
+                        <div class="group">
+                            <div class="man-blood active">1</div>
+                            <div class="man-blood">2</div>
+                        </div>
+                        <div class="group">
+                            <div class="man-blood">3</div>
+                            <div class="man-blood">4</div>
+                        </div>
+                    </div>
+                    Резус
+                    <div class="blood-buttons">
+                        <div class="group">
+                            <div class="man-rh active">+</div>
+                            <div class="man-rh">-</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <h2>Мама</h2>
+                    Группа крови
+                    <div class="blood-buttons">
+                        <div class="group">
+                            <div class="woman-blood active">1</div>
+                            <div class="woman-blood">2</div>
+                        </div>
+                        <div class="group">
+                            <div class="woman-blood">3</div>
+                            <div class="woman-blood">4</div>
+                        </div>
+                    </div>
+                    Резус
+                    <div class="blood-buttons">
+                        <div class="group">
+                            <div class="woman-rh active">+</div>
+                            <div class="woman-rh">-</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="button-group">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit" data-toggle="tooltip"
+                        title="Нажмите, чтобы узнать группу крови ребенка">
+                    <img src="{% static 'images/fathers.jpg' %}" width="50px" height="50px">
+
+                    <h4><span> Рассчитать группу крови ребенка</span></h4>
+                </button>
+
+            </div>
+        </form>
+        <div class="" id="results"></div>
+    </div>
+{% endblock %}
+
+{% block extrajs %}
+    <script>
+        function get_results(man_blood, man_rh, woman_blood, woman_rh) {
+            man_blood = parseInt(man_blood);
+            woman_blood = parseInt(woman_blood);
+            if (man_blood > woman_blood) {
+                c = man_blood;
+                man_blood = woman_blood;
+                woman_blood = c;
+            }
+            one = 0;
+            two = 0;
+            three = 0;
+            four = 0;
+            switch (man_blood) {
+                case 1:
+                    switch (woman_blood) {
+                        case 1:
+                            one = 100;
+                            break;
+                        case 2:
+                            one = 25;
+                            two = 75;
+                            break;
+                        case 3:
+                            one = 25;
+                            three = 75;
+                            break;
+                        case 4:
+                            two = 50;
+                            three = 50;
+                    }
+                    break;
+                case 2:
+                    switch (woman_blood) {
+                        case 2:
+                            one = 6;
+                            two = 94;
+                            break;
+                        case 3:
+                            one = 6;
+                            two = 19;
+                            three = 19;
+                            four = 56;
+                            break;
+                        case 4:
+                            two = 50;
+                            three = 37;
+                            four = 13;
+                    }
+                    break;
+                case 3:
+                    switch (woman_blood) {
+                        case 3:
+                            one = 6;
+                            three = 94;
+                            break;
+                        case 4:
+                            two = 37;
+                            three = 50;
+                            four = 13;
+                    }
+                    break;
+                case 4:
+                    switch (woman_blood) {
+                        case 4:
+                            two = 25;
+                            three = 25;
+                            four = 50;
+                    }
+                    break;
+            }
+            h2 = '<h2> Ваши результаты готовы </h2>';
+            man_rh_text = 'положительным';
+            if (man_rh === '-') {
+                man_rh_text = 'отрицательным';
+
+            }
+            woman_rh_text = 'положительным';
+            if (woman_rh === '-') {
+                woman_rh_text = 'отрицательным';
+
+            }
+            parents_text = '<p> Если у мамы ' + woman_blood + '-я группа с ' + woman_rh_text +
+                ' резусом,  </p><p>  а у папы ' + man_blood + '-я группа с ' + man_rh_text + ' резусом, </p><p>  то у ребенка может быть: </p>';
+            arr = [one, two, three, four];
+            arr2 = [];
+            for (i = 0; i < arr.length; i++) {
+                if (arr[i] !== 0) {
+                    arr2.push({'name': i + 1, 'probability': arr[i]})
+                }
+            }
+
+            function com(a, b) {
+                return b['probability'] > a['probability'];
+            }
+
+            arr2.sort(com);
+            blood_text = '';
+            for (i = 0; i < arr2.length; i++) {
+                blood_text += '<p><strong>' + arr2[i]['name'] + '-я группа с вероятностью ' + arr2[i]['probability'] + '%</strong></p>'
+            }
+
+            rh = 'любой резус фактор';
+            if (man_rh === '-' && woman_rh === '-') {
+                rh = 'только отрицательный резус фактор '
+            }
+            rh_text = '<p> У ребенка может быть ' + rh + '</p>';
+            $('#results').addClass('results');
+            $('#results').html(h2 + parents_text + blood_text + rh_text)
+        }
+
+        $('#calculator').submit(function () {
+            get_results($('.man-blood.active').text(), $('.man-rh.active').text(),
+                $('.woman-blood.active').text(), $('.woman-rh.active').text());
+            return false;
+        });
+        $(document).keypress(function (e) {
+            if (e.which === 13) {
+
+                get_results($('.man-blood.active').text(), $('.man-rh.active').text(),
+                    $('.woman-blood.active').text(), $('.woman-rh.active').text())
+            }
+        });
+
+        $('.woman-blood').on('click', function () {
+            women = $('.woman-blood');
+            for (i = 0; i < women.length; i++) {
+                $(women[i]).removeClass('active')
+            }
+            $(this).addClass('active')
+        });
+        $('.woman-rh').on('click', function () {
+            women = $('.woman-rh');
+            for (i = 0; i < women.length; i++) {
+                $(women[i]).removeClass('active')
+            }
+            $(this).addClass('active')
+        });
+        $('.man-blood').on('click', function () {
+            men = $('.man-blood');
+            for (i = 0; i < men.length; i++) {
+                $(men[i]).removeClass('active')
+            }
+            $(this).addClass('active')
+        });
+        $('.man-rh').on('click', function () {
+            men = $('.man-rh');
+            for (i = 0; i < men.length; i++) {
+                $(men[i]).removeClass('active')
+            }
+            $(this).addClass('active')
+        })
+    </script>
+{% endblock %}

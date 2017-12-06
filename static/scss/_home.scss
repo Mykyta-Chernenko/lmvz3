@@ -1,0 +1,32 @@
+@import "variables";
+
+.home {
+  display: flex;
+  justify-content: center;
+  .blood-home {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    .blood-info {
+      justify-self: center;
+      align-self: center;
+      margin: 20px;
+      box-shadow: 10px 10px 5px $red;
+      background-color: whitesmoke;
+      border: 1px solid $red;
+      border-radius: 10px;
+      padding: 8px;
+      h1 {
+        text-decoration: underline;
+        text-decoration-color: $red;
+      }
+      display: flex;
+      justify-content: center;
+      justify-items: center;
+      flex-direction: column;
+    }
+
+  }
+}
+

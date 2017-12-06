@@ -1,0 +1,95 @@
+#content-main {
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  margin: 5px;
+  padding: 20px;
+  width: 80%;
+  background-color: white;
+  #base_search {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    border-bottom: 2px solid $red;
+    margin-bottom: 10px;
+    padding: 5px;
+    margin-top: 10px;
+    div {
+      display: flex;
+      flex-direction: column;
+      width: 23%;
+      margin-bottom: 10px;
+    }
+    button{
+      display: flex;
+      margin-left: 40%;
+      justify-self: center;
+      align-self: center;
+    }
+
+  }
+  #search_add {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+    border-bottom: solid 2px $red;
+
+  }
+  #result_filter {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    #changelist-filter {
+      border-left: solid 2px $red;
+      padding-left: 5px;
+      margin-left: 5px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      h2 {
+        border-bottom: 1px solid $red;
+      }
+      h3{
+        padding-top: 10px;
+        align-self: flex-start;
+      }
+      li{
+        margin-left: 30px;
+        list-style: square;
+        a{
+          color: black;
+        }
+        &.selected{
+          color: $red;
+          a{
+            color: $red;
+          }
+        }
+
+      }
+
+    }
+    .actions {
+      padding: 5px;
+      margin-bottom: 5px;
+      border-bottom: 2px solid $red;
+    }
+    .results {
+      padding: 5px;
+      #result_list {
+        .sortoptions {
+          .sortremove {
+            color: $red;
+          }
+          .toggle {
+            color: $red;
+          }
+        }
+      }
+    }
+  }
+}

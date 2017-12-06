@@ -1,0 +1,59 @@
+{% load sass_tags %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <link href="{% sass_src 'scss/all.scss' %}" rel="stylesheet" type="text/css"/>
+    {% block extrahead %} {% endblock %}
+</head>
+<body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<div class="content">
+    <header>
+        <nav class="navbar navbar-toggleable-md navbar-light bg-faded">
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+                    data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'home' %}"><img src="{% static 'png/groceries-shop.png' %}" height="30px" width="30px"> Домой</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'calculator' %}"> <img src="{% static 'png/calculator1600.png' %}" height="30px" width="30px"> Калькулятор</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/admin/donor/donor"><img src="{% static 'png/blood-drop-icon.png' %}" height="30px" width="30px">База сдачи крови</a>
+                    </li>
+                </ul>
+                <form id="search_form" class="form-inline my-2 my-lg-0">
+                    <input id='menu_input' class="form-control mr-sm-2" type="text" placeholder="Иванов 1 + 2017-5-10"
+                           data-toggle="tooltip"
+                           title="Вы можете пропустить некоторые параметры для поиска">
+                    <button id="menu_search" class="btn btn-outline-success my-2 my-sm-0" type="submit" data-toggle="tooltip"
+                            title="Нажмите, чтобы совершить поиск среди сдач крови"><img src="/static/png/blood-search.png" width="40px" height="40px"><span> Поиск
+                        сдачи крови</span>
+                    </button>
+                </form>
+            </div>
+        </nav>
+    </header>
+    {% block content %} {% endblock %}
+</div>
+<script>
+    $('#search_form').on('submit',function () {
+        q = $('#menu_input').val();
+        window.location.href = '/admin/donor/donor?q='+q+'&type=elastic'
+        return false
+    })
+</script>
+{% block extrajs %} {% endblock %}
+</body>
+</html>

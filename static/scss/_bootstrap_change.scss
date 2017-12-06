@@ -1,0 +1,15 @@
+@import "variables";
+
+.btn-outline-success {
+  border-color: rgba($purple, 0.5);
+  background-color: white;
+  color: black;
+  &:hover {
+    border-color: $purple;
+    background-color: white;
+    color: black;
+    span {
+      border-bottom: 2px solid rgba($purple, 0.5);
+    }
+  }
+}
